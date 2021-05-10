@@ -1,0 +1,39 @@
+﻿<Page x:Class="Cursed.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cursed.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1200"
+      Title="MainPage"
+      >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Товар" Height="50" Width="250" Margin="20" Click="OpenProduct" />
+            <Button Content="Клиенты" Height="50" Width="250" Margin="20" Click="OpenClient"/>
+            <Button Content="Поставщики" Height="50" Width="250" Margin="20" Click="OpenProvider"/>
+            <Button Content="Поставочная накладная" Height="50" Width="250" Margin="20" Click="OpenDeliveryNote"/>
+            <Button Content="Доставочная накладная" Height="50" Width="250" Margin="20" Click="OpenDepatNote"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Menu >
+                <MenuItem Header="Товар" Height="40" Click="OpenProduct"/>
+                <MenuItem Header="Перемещение товара" Click="OpenPageMoveProduct"/>
+                <MenuItem Header="Клиенты" Click="OpenClient"/>
+                <MenuItem Header="Поставщики" Click="OpenProvider"/>
+                <MenuItem Header="Поставочная накладная" Click="OpenDeliveryNote"/>
+                <MenuItem Header="Доставочная накладная" Click="OpenDepatNote"/>
+                <MenuItem Header="Настройки" Click="OpenPageSettings"/>
+            </Menu>
+        </StackPanel>
+    </Grid>
+</Page>

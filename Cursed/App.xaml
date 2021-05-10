@@ -1,0 +1,16 @@
+﻿<Application x:Class="Cursed.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Cursed"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--Чтобы все нормально показывало в зависимостях добавить -  - -->
+                <!--Ниже в source мы пишем какую темы мы берем в основную(т.е. хотим тему dark - пишем
+       "Source="Themes/DarkTheme.xaml" и дальше уже на странице пишем Style="{StaticResource CustomWindowStyle}" )-->
+                <ResourceDictionary Source="Themes/ColourfulLightTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
