@@ -17,7 +17,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="70"/>
             <RowDefinition/>
-            <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
               <Grid.ColumnDefinitions>
@@ -40,17 +39,25 @@
                 <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedPartOfWarehouse}" DisplayMemberPath="Name" Margin="2" Width="200"/>
                 </StackPanel>
             </Grid>
-            <!--<StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1">
-                <TextBlock Text="Выберите куда переместить" Margin="2,4,2,4" HorizontalAlignment="Center"/>
-                <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedProduct.PartOfWarehouse}" DisplayMemberPath="Name" Margin="2,2,2,2" Width="200" />
-            </StackPanel>-->
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel   Grid.Column="0">
+                    <TextBlock Text="Выберите куда переместить" Margin="2,4,2,4" HorizontalAlignment="Center"/>
+                <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedPartOfWarehouse2}" DisplayMemberPath="Name" Margin="2,2,2,2" Width="200" />
+            </StackPanel>
+                <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Content="Переместить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="30"/>
+                </StackPanel>
+            </Grid>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ListView Grid.Column="0" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}"  Margin="2,0,2,0">
+            <ListView  ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}"  Margin="2,0,2,0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Код" DisplayMemberBinding="{Binding Code}"/>
@@ -60,16 +67,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView Grid.Column="1" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}"  Margin="2,0,2,0">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Код" DisplayMemberBinding="{Binding Code}"/>
-                        <GridViewColumn Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Кол-во" DisplayMemberBinding="{Binding Count}"/>
-                        <GridViewColumn Header="Ед. изм." DisplayMemberBinding="{Binding Unit}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            
         </Grid>
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Menu >
@@ -81,9 +79,6 @@
                 <MenuItem Header="Доставочная накладная" Click="OpenDepatNote"/>
                 <MenuItem Header="Настройки" Click="OpenPageSettings"/>
             </Menu>
-        </StackPanel>
-        <StackPanel Grid.Row="3">
-            <Button Content="Переместить" Padding="5" Margin="5" Command="{Binding AddProduct}"/>
         </StackPanel>
     </Grid>
 </Page>
