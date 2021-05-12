@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageMoveProduct"
-      Background="AliceBlue">
+      >
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -49,7 +49,7 @@
                 <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedPartOfWarehouse2}" DisplayMemberPath="Name" Margin="2,2,2,2" Width="200" />
             </StackPanel>
                 <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button Content="Переместить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="30"/>
+                    <Button Content="Переместить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="30" Command="{Binding MoveProduct}"/>
                 </StackPanel>
             </Grid>
         </Grid>
