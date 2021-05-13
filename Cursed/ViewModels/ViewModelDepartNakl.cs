@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cursed.ViewModels
 {
-    public class ViewModelDeliveryNote
+    public class ViewModelDepartNakl
     {
     }
 }

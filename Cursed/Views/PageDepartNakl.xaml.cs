@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 namespace Cursed.Views
 {
     /// <summary>
-    /// Логика взаимодействия для PageDepartNote.xaml
+    /// Логика взаимодействия для PageDepartNakl.xaml
     /// </summary>
-    public partial class PageDepartNote : Page
+    public partial class PageDepartNakl : Page
     {
-        public PageDepartNote()
+        public PageDepartNakl()
         {
             InitializeComponent();
-            DataContext = new ViewModelDepartNote();
+            DataContext = new ViewModelDepartNakl();
         }
         private void OpenProduct(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageProduct());
         private void OpenProvider(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageProvider());

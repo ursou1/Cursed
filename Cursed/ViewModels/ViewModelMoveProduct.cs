@@ -37,11 +37,15 @@ namespace Cursed.ViewModels
 
             MoveProduct = new MiniCommand(() =>
             {
-                if (SelectedPartOfWarehouse != null && SelectedPartOfWarehouse2 != null && SelectedPartOfWarehouse2 != SelectedPartOfWarehouse && SelectedProduct != null)
-                {
-                    SelectedProduct.PartOfWarehouse = SelectedPartOfWarehouse2;
+            if (SelectedPartOfWarehouse != null && SelectedPartOfWarehouse2 != null && SelectedPartOfWarehouse2 != SelectedPartOfWarehouse && SelectedProduct != null)
+            {
+                SelectedProduct.PartOfWarehouse = SelectedPartOfWarehouse2;
+                DB.SaveChanges();
+                System.Windows.MessageBox.Show("Товар был перемещен");
+                Products = new ObservableCollection<Product>(selectedPartOfWarehouse.Products);
+                SignalChanged("Products");
+                RefreshListView();
 
-                    DB.SaveChanges();
                 }
                 else
                 {
@@ -75,10 +79,13 @@ namespace Cursed.ViewModels
                     if (selectedPartOfWarehouse.Products == null || selectedPartOfWarehouse.Products.Count == 0)
                     {
                         System.Windows.MessageBox.Show("Вы выбрали пустой отсек");
+                        RefreshListView();
+                        
                     }
                     else
                         Products = new ObservableCollection<Product>(selectedPartOfWarehouse.Products);
                         SignalChanged("Products");
+                        RefreshListView();
                 }
                 catch(Exception ex)
                 {

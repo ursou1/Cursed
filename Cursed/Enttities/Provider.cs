@@ -12,6 +12,5 @@ namespace Cursed.Enttities
         public string Email { get; set; }
 
         public List<Product> Products { get; set; }
-        public List<DeliveryNote> DeliveryNotes { get; set; }
     }
 }

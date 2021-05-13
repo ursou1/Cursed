@@ -7,13 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageDepartNote"
-      >
+      Background="AliceBlue">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -23,9 +24,14 @@
                 <MenuItem Header="Перемещение товара" Click="OpenPageMoveProduct"/>
                 <MenuItem Header="Клиенты" Click="OpenClient"/>
                 <MenuItem Header="Поставщики" Click="OpenProvider"/>
-                <MenuItem Header="Поставочная накладная" Click="OpenDeliveryNote"/>
-                <MenuItem Header="Доставочная накладная" Click="OpenDepatNote"/>
+                <MenuItem Header="Накладная" Click="OpenDepatNote"/>
                 <MenuItem Header="Настройки" Click="OpenPageSettings"/>
+            </Menu>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Menu >
+                <MenuItem Header="Приход" Height="30" Click="OpenPageDeliveryNakl"/>
+                <MenuItem Header="Расход" Click="OpenPageDepartNakl"/>
             </Menu>
         </StackPanel>
     </Grid>

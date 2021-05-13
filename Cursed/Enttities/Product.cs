@@ -17,5 +17,8 @@ namespace Cursed.Enttities
         public Provider Provider { get; set; }
         public ProductType ProductType { get; set; }
         public List<DepartNote> DepartNotes { get; set; }
+        public List<DeliveryNote> DeliveryNotes  { get; set; }
+        
+       
     }
 }

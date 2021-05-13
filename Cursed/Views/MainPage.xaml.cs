@@ -29,7 +29,6 @@ namespace Cursed.Views
         private void OpenProvider(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageProvider());
         private void OpenClient(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageClient());
         private void OpenDepatNote(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageDepartNote());
-        private void OpenDeliveryNote(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageDeliveryNote());
         private void OpenPageSettings(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageSettings());
         private void OpenPageMoveProduct(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageMoveProduct());
         

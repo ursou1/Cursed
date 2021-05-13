@@ -8,6 +8,7 @@ namespace Cursed.Enttities
     {
         public int Id { get; set; }
         public DateTime DeliveryDate { get; set; }
+        public List<Product> Products { get; set; }
 
     }
 }

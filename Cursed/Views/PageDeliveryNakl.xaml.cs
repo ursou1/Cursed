@@ -15,21 +15,26 @@ using System.Windows.Shapes;
 namespace Cursed.Views
 {
     /// <summary>
-    /// Логика взаимодействия для PageDeliveryNote.xaml
+    /// Логика взаимодействия для PageDeliveryNakl.xaml
     /// </summary>
-    public partial class PageDeliveryNote : Page
+    public partial class PageDeliveryNakl : Page
     {
-        public PageDeliveryNote()
+        public PageDeliveryNakl()
         {
             InitializeComponent();
-            DataContext = new ViewModelDeliveryNote();
+            DataContext = new ViewModelDeliveryNakl();
         }
         private void OpenProduct(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageProduct());
         private void OpenProvider(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageProvider());
         private void OpenClient(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageClient());
         private void OpenDepatNote(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageDepartNote());
-        private void OpenDeliveryNote(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageDeliveryNote());
         private void OpenPageSettings(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageSettings());
         private void OpenPageMoveProduct(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageMoveProduct());
+
+        #region Второстепенная менюшка
+        private void OpenPageDeliveryNakl(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageDeliveryNakl());
+        private void OpenPageDepartNakl(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageDepartNakl());
+
+        #endregion
     }
 }

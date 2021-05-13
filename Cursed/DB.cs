@@ -20,7 +20,7 @@ namespace Cursed
         {
             var sb = new SqlConnectionStringBuilder();
             sb.DataSource = @"WIN-0DJJ09S5CB3";
-            sb.InitialCatalog = "TypSklads";
+            sb.InitialCatalog = "CursedSkladq";
             sb.IntegratedSecurity = true;
             optionsBuilder.UseSqlServer(sb.ToString());
             base.OnConfiguring(optionsBuilder);
