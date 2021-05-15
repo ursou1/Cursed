@@ -47,7 +47,7 @@ namespace Cursed.ViewModels
             #region Команда с добавлением
             AddProduct = new MiniCommand(() =>
             {
-                var product = new Product { Code=0,Name="Наименование", Count=0,Price=0,Cost=0,Unit="Ед.изм." };
+                var product = new Product { Code=0,Name="Наименование", Count=0,Price=0,Unit="Ед.изм." };
                 DB.Products.Add(product);
                 SelectedProduct = product;
                 RefreshListView();
@@ -121,7 +121,8 @@ namespace Cursed.ViewModels
         {
             if (obj is Product product)
             {
-                return product.Name.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase) || product.Unit.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase);
+                string pc = product.Code.ToString();//это нужно, чтобы искать в поиске по коду товара, ибо штука снизу просит string, а не int..
+                return product.Name.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase) || product.Unit.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase) || pc.Contains(EmployeesFilter, StringComparison.Ordinal);//new 3 argument
             }
             return false;
         }

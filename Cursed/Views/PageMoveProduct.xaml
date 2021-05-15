@@ -36,7 +36,7 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                 <TextBlock Text="Выберите откуда переместить" Margin="2,4,2,4" HorizontalAlignment="Center" />
-                <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedPartOfWarehouse}" DisplayMemberPath="Name" Margin="2" Width="200"/>
+                <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedPartOfWarehouse}" DisplayMemberPath="Name" Margin="2" Width="200" IsEditable="True"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
@@ -46,7 +46,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel   Grid.Column="0">
                     <TextBlock Text="Выберите куда переместить" Margin="2,4,2,4" HorizontalAlignment="Center"/>
-                <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedPartOfWarehouse2}" DisplayMemberPath="Name" Margin="2,2,2,2" Width="200" />
+                    <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedPartOfWarehouse2}" DisplayMemberPath="Name" Margin="2,2,2,2" Width="200" IsEditable="True" />
             </StackPanel>
                 <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button Content="Переместить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="30" Command="{Binding MoveProduct}"/>
@@ -75,7 +75,7 @@
                 <MenuItem Header="Перемещение товара" Click="OpenPageMoveProduct"/>
                 <MenuItem Header="Клиенты" Click="OpenClient"/>
                 <MenuItem Header="Поставщики" Click="OpenProvider"/>
-                <MenuItem Header="Накладная" Click="OpenDepatNote"/>
+                <MenuItem Header="Накладная" Click="OpenPageDeliveryNakl"/>
                 <MenuItem Header="Настройки" Click="OpenPageSettings"/>
             </Menu>
         </StackPanel>

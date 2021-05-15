@@ -28,7 +28,9 @@ namespace Cursed
             MainFrame.Content = new MainPage();
             DataContext = new MainViewModel();
             DB.GetDb();
-           
+
+            Uri iconUri = new Uri( "F:/Igru/Joker320/foto/cursedicon.jpg", UriKind.RelativeOrAbsolute);
+            this.Icon = BitmapFrame.Create(iconUri);
         }
     }
 }

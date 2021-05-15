@@ -89,6 +89,7 @@ namespace Cursed.ViewModels
                 }
                 catch(Exception ex)
                 {
+                    System.Windows.MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -126,7 +127,8 @@ namespace Cursed.ViewModels
         {
             if (obj is Product product)
             {
-                return product.Name.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase) || product.Unit.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase);
+                string pc = product.Code.ToString();//это нужно, чтобы искать в поиске по коду товара, ибо штука снизу просит string, а не int..
+                return product.Name.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase) || product.Unit.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase) || pc.Contains(EmployeesFilter, StringComparison.Ordinal); ;
             }
             return false;
         }

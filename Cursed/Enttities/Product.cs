@@ -11,7 +11,6 @@ namespace Cursed.Enttities
         public string Name { get; set; }
         public int Count { get; set; }
         public int Price { get; set; }
-        public int Cost { get; set; }
         public string Unit { get; set; }
         public PartOfWarehouse PartOfWarehouse { get; set; }
         public Provider Provider { get; set; }

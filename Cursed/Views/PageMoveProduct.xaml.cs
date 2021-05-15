@@ -27,8 +27,13 @@ namespace Cursed.Views
         private void OpenProduct(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageProduct());
         private void OpenProvider(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageProvider());
         private void OpenClient(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageClient());
-        private void OpenDepatNote(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageDepartNote());
         private void OpenPageSettings(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageSettings());
         private void OpenPageMoveProduct(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageMoveProduct());
+
+        #region Второстепенная менюшка
+        private void OpenPageDeliveryNakl(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageDeliveryNakl());
+        private void OpenPageDepartNakl(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageDepartNakl());
+
+        #endregion
     }
 }

@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Cursed.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageDeliveryNakl">
+      Title="PageDeliveryNakl"
+      Background="AliceBlue">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,6 +17,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Menu >
@@ -23,7 +25,7 @@
                 <MenuItem Header="Перемещение товара" Click="OpenPageMoveProduct"/>
                 <MenuItem Header="Клиенты" Click="OpenClient"/>
                 <MenuItem Header="Поставщики" Click="OpenProvider"/>
-                <MenuItem Header="Накладная" Click="OpenDepatNote"/>
+                <MenuItem Header="Накладная" Click="OpenPageDeliveryNakl"/>
                 <MenuItem Header="Настройки" Click="OpenPageSettings"/>
             </Menu>
         </StackPanel>
@@ -32,6 +34,25 @@
                 <MenuItem Header="Приход" Height="30" Click="OpenPageDeliveryNakl"/>
                 <MenuItem Header="Расход" Click="OpenPageDepartNakl"/>
             </Menu>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <ListView Grid.Column="1" ItemsSource="{Binding DeliveryNotes}" SelectedItem="{Binding SelectedDeliveryNote}"  Margin="2,0,2,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Номер" DisplayMemberBinding="{Binding Number}"/>
+                        <GridViewColumn Header="Дата прихода" DisplayMemberBinding="{Binding DeliveryDate}"/>
+                        <GridViewColumn Header="Имя" />
+                        <GridViewColumn Header="Фамилия" />
+                        <GridViewColumn Header="Отчество" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Добавить" Padding="5" Margin="5" Command="{Binding AddDeliveryNakl}"/>
+            <Button Content="Редактировать" Padding="5" Margin="5" Command="{Binding EdDeliveryNakl}"/>
+            <Button Content="Просмотреть" Padding="5" Margin="5" Command="{Binding CheckDeliveryNakl}"/> <!--это в последнюю очередь сделать-->
+            <Button Content="Удалить" Padding="5" Margin="5" Command="{Binding DeleteDeliveryNakl}"/>
         </StackPanel>
     </Grid>
 </Page>

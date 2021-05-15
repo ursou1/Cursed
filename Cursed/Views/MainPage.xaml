@@ -21,7 +21,7 @@
             <Button Content="Товар" Height="50" Width="250" Margin="20" Click="OpenProduct" />
             <Button Content="Клиенты" Height="50" Width="250" Margin="20" Click="OpenClient"/>
             <Button Content="Поставщики" Height="50" Width="250" Margin="20" Click="OpenProvider"/>
-            <Button Content="Накладная" Height="50" Width="250" Margin="20" Click="OpenDepatNote"/>
+            <Button Content="Накладная" Height="50" Width="250" Margin="20" Click="OpenPageDeliveryNakl"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Menu >
@@ -29,7 +29,7 @@
                 <MenuItem Header="Перемещение товара" Click="OpenPageMoveProduct"/>
                 <MenuItem Header="Клиенты" Click="OpenClient"/>
                 <MenuItem Header="Поставщики" Click="OpenProvider"/>
-                <MenuItem Header="Накладная" Click="OpenDepatNote"/>
+                <MenuItem Header="Накладная" Click="OpenPageDeliveryNakl"/>
                 <MenuItem Header="Настройки" Click="OpenPageSettings"/>
             </Menu>
         </StackPanel>
