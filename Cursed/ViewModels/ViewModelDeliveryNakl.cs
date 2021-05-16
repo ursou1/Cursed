@@ -15,31 +15,15 @@ namespace Cursed.ViewModels
     {
         DB DB;
         public event PropertyChangedEventHandler PropertyChanged;
+
         public Window window { get; set; }
 
-        public WinDeliveryNaklEd  WinDeliveryNaklEd = new WinDeliveryNaklEd();
-
-        #region signalchanged
-
-        protected void SignalChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (Equals(field, value)) return false;
-            field = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            return true;
-        }
-
-        #endregion
+        void SignalChanged([CallerMemberName] string prop = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
         #region Commands
 
         public MiniCommand AddDeliveryNakl { get; set; } 
-        public MiniCommand EdDeliveryNakl { get; set; } 
+        public MiniCommand SaveDeliveryNakl { get; set; } 
         public MiniCommand CheckDeliveryNakl { get; set; } 
         public MiniCommand DeleteDeliveryNakl { get; set; } 
 
@@ -52,76 +36,65 @@ namespace Cursed.ViewModels
             DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
             SignalChanged("DeliveryNotes");
 
-            #region Команда редактировать 
-            EdDeliveryNakl = new MiniCommand(() =>
-            {
-                if(selectedDeliveryNote != null)
-                {
-                    window = new WinDeliveryNaklEd(SelectedDeliveryNote);
-                    window.ShowDialog();
-                }
-                else
-                {
-                    System.Windows.MessageBox.Show("Выберите поле");
-                }
-            });
-            #endregion
+            #region Команда с добавлением
 
-            #region Команда удалить
-            DeleteDeliveryNakl = new MiniCommand(() =>
-            {
-                DB.DeliveryNotes.Remove(selectedDeliveryNote);
-                DB.SaveChanges();
-                DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
-                SignalChanged("DeliveryNotes");
-            });
-            #endregion
-
-            #region Команда добавить
             AddDeliveryNakl = new MiniCommand(() =>
             {
-                var deliveryNote = new DeliveryNote { };
+                var deliveryNote = new DeliveryNote {  };
                 DB.DeliveryNotes.Add(deliveryNote);
                 SelectedDeliveryNote = deliveryNote;
-                DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
-                SignalChanged("DeliveryNotes");
+            });
+            #endregion
+
+            #region Команда с сохранением
+            SaveDeliveryNakl = new MiniCommand(() =>
+            {
                 try
                 {
                     DB.SaveChanges();
-                    DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
-                    SignalChanged("DeliveryNotes");
+                    LoadDeliveryNotes();
                 }
                 catch (Exception ex)
                 {
                     System.Windows.MessageBox.Show(ex.Message);
                 }
-                window = new WinDeliveryNaklEd(SelectedDeliveryNote);
-                window.ShowDialog();
+            });
+            #endregion
+
+            #region Команда с удалением
+            DeleteDeliveryNakl = new MiniCommand(() =>
+            {
+                DB.DeliveryNotes.Remove(selectedDeliveryNote);
+                DB.SaveChanges();
+                LoadDeliveryNotes();
             });
             #endregion
 
             #region команда с открытием листа с продуктами
-            #endregion
             CheckDeliveryNakl = new MiniCommand(() =>
             {
                 window = new WinDeliveryNaklList();
                 window.ShowDialog();
             });
+            #endregion
         }
 
-        private DeliveryNote selectedDeliveryNote; /*= new DeliveryNote { };*/
+        private DeliveryNote selectedDeliveryNote;
         public DeliveryNote SelectedDeliveryNote
         {
             get => selectedDeliveryNote;
             set
             {
-                selectedDeliveryNote = new DeliveryNote { };
-                Set(ref selectedDeliveryNote, value);
+                selectedDeliveryNote = value;
                 SignalChanged();
             }
         }
 
-
+        private void LoadDeliveryNotes()
+        {
+            DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
+            SignalChanged("DeliveryNotes");
+        }
 
     }
 }

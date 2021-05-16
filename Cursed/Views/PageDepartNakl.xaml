@@ -34,5 +34,37 @@
                 <MenuItem Header="Расход" Click="OpenPageDepartNakl"/>
             </Menu>
         </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="1" Grid.Column="0">
+
+                <TextBlock Text="Номер" Margin="2,4,2,4"/>
+                <TextBox Text="{Binding SelectedDepartNote.Number}" Margin="2,4,2,4"/>
+
+                <TextBlock Text="Дата" Margin="2,4,2,4"/>
+                <TextBox Text="{Binding SelectedDepartNote.DepartDate}" Margin="2,4,2,4"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button Content="Добавить" Padding="5" Margin="5" Command="{Binding AddDepartNakl}"/>
+                <Button Content="Сохранить" Padding="5" Margin="5" Command="{Binding SaveDepartNakl}"/>
+                <Button Content="Просмотреть" Padding="5" Margin="5" Command="{Binding CheckDepartNakl}"/>
+                <Button Content="Удалить" Padding="5" Margin="5" Command="{Binding DeleteDepartNakl}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="1">
+                <ListView Grid.Column="1" ItemsSource="{Binding DepartNotes}" SelectedItem="{Binding SelectedDepartNote}"  Margin="2,0,2,0" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Номер" DisplayMemberBinding="{Binding Number}" Width="100"/>
+                            <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding DeliveryDate}" Width="200"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
