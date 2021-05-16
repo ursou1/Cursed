@@ -100,6 +100,13 @@ namespace Cursed.ViewModels
             });
             #endregion
 
+            #region команда с открытием листа с продуктами
+            #endregion
+            CheckDeliveryNakl = new MiniCommand(() =>
+            {
+                window = new WinDeliveryNaklList();
+                window.ShowDialog();
+            });
         }
 
         private DeliveryNote selectedDeliveryNote; /*= new DeliveryNote { };*/

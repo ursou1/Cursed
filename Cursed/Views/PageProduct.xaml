@@ -27,7 +27,6 @@
                         <GridViewColumn Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="Кол-во" DisplayMemberBinding="{Binding Count}"/>
                         <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}"/>
-                        <GridViewColumn Header="Стоимость" DisplayMemberBinding="{Binding Cost}"/>
                         <GridViewColumn Header="Ед. изм." DisplayMemberBinding="{Binding Unit}"/>
                     </GridView>
                 </ListView.View>
