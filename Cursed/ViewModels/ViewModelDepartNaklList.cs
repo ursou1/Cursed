@@ -8,44 +8,41 @@ using System.Text;
 
 namespace Cursed.ViewModels
 {
-    public class ViewModelDeliveryNaklList: INotifyPropertyChanged
+    public class ViewModelDepartNaklList: INotifyPropertyChanged
     {
-
         DB DB;
 
-        public ObservableCollection<DeliveryNote> DeliveryNotes { get; set; }
-        public ObservableCollection<Product> Products { get; set; }
-
-        
-        void SignalChanged([CallerMemberName] string prop = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-
         public event PropertyChangedEventHandler PropertyChanged;
-        public ViewModelDeliveryNaklList()
+
+        public ObservableCollection<Product> Products { get; set; }
+        public ObservableCollection<DepartNote> DepartNotes { get; set; }
+
+        void SignalChanged([CallerMemberName] string prop = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        public ViewModelDepartNaklList()
         {
             DB = DB.GetDb();
 
-            DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
-            
+            DepartNotes = new ObservableCollection<DepartNote>(DB.DepartNotes);
         }
 
-        private DeliveryNote selectedDeliveryNote;
+        private DepartNote selectedDepartNote;
 
-        public DeliveryNote SelectedDeliveryNote
+        public DepartNote SelectedDepartNote
         {
-            get => selectedDeliveryNote;
+            get => selectedDepartNote;
             set
             {
-                selectedDeliveryNote = value;
+                selectedDepartNote = value;
                 try
                 {
-                    if (selectedDeliveryNote.Products == null || selectedDeliveryNote.Products.Count == 0)
+                    if (selectedDepartNote.Products == null || selectedDepartNote.Products.Count == 0)
                     {
                         System.Windows.MessageBox.Show("Список пуст");
 
                     }
                     else
-                        Products = new ObservableCollection<Product>(selectedDeliveryNote.Products);
-                        SignalChanged("Products");
+                        Products = new ObservableCollection<Product>(selectedDepartNote.Products);
+                    SignalChanged("Products");
                 }
                 catch (Exception ex)
                 {

@@ -15,8 +15,8 @@ namespace Cursed.Enttities
         public PartOfWarehouse PartOfWarehouse { get; set; }
         public Provider Provider { get; set; }
         public ProductType ProductType { get; set; }
-        public List<DepartNote> DepartNotes { get; set; }
-        public List<DeliveryNote> DeliveryNotes  { get; set; }
+        public DepartNote DepartNotes { get; set; }
+        public DeliveryNote DeliveryNotes  { get; set; }
         
        
     }

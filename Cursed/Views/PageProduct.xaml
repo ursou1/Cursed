@@ -28,6 +28,8 @@
                         <GridViewColumn Header="Кол-во" DisplayMemberBinding="{Binding Count}"/>
                         <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}"/>
                         <GridViewColumn Header="Ед. изм." DisplayMemberBinding="{Binding Unit}"/>
+                        <GridViewColumn Header="Приход" DisplayMemberBinding="{Binding DeliveryNotes.Number}"/>
+                        <GridViewColumn Header="Уход" DisplayMemberBinding="{Binding DepartNotes.Number}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -41,12 +43,18 @@
             
                 <TextBlock Text="Отсек" Margin="2,4,2,4"/>
                 <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedProduct.PartOfWarehouse}" DisplayMemberPath="Name" Margin="2" IsEditable="True"/>
-<!--New-->
                 <TextBlock Text="Поставщик" Margin="2,4,2,4"/>
                 <ComboBox ItemsSource="{Binding Providers}" SelectedItem="{Binding SelectedProduct.Provider}" DisplayMemberPath="Name" Margin="2" IsEditable="True"/>
 
                 <TextBlock Text="Тип продукта" Margin="2,4,2,4"/>
                 <ComboBox ItemsSource="{Binding ProductTypes}" SelectedItem="{Binding SelectedProduct.ProductType}" DisplayMemberPath="Name" Margin="2" />
+
+<!--New-->
+                <TextBlock Text="Номер приходной накладной" Margin="2,4,2,4"/>
+                <ComboBox ItemsSource="{Binding DeliveryNotes}" SelectedItem="{Binding SelectedProduct.DeliveryNotes}" DisplayMemberPath="Number" Margin="2"/>
+
+                <TextBlock Text="Номер уходной накладной" Margin="2,4,2,4"/>
+                <ComboBox ItemsSource="{Binding DepartNotes}" SelectedItem="{Binding SelectedProduct.DepartNotes}" DisplayMemberPath="Number" Margin="2"/>
 <!--New-->
 
                 <TextBlock Text="Код" Margin="2,4,2,4"/>

@@ -19,13 +19,13 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
             
-        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!--<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Закрыть" Padding="5" Margin="5" />
-        </StackPanel>
+        </StackPanel>-->
             
         </Grid>
         <StackPanel Grid.Column="1">
-            <ListView  ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}"  Margin="2,0,2,0">
+            <ListView  ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}"  Margin="2,0,2,0" Height="600">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Код" DisplayMemberBinding="{Binding Code}"/>

@@ -1,5 +1,6 @@
 ﻿using Cursed.Commands;
 using Cursed.Enttities;
+using REghZyFramework.Themes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,8 @@ namespace Cursed.ViewModels
         public ObservableCollection<PartOfWarehouse> PartOfWarehouses { get; set; }
         public MiniCommand AllProduct { get; set; }
         public MiniCommand CountingProduct { get; set; }
+        public MiniCommand DarkTheme { get; set; }
+        public MiniCommand LightTheme { get; set; }
         void SignalChanged([CallerMemberName] string prop = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         public ViewModelSettings()
         {
@@ -38,7 +41,15 @@ namespace Cursed.ViewModels
                 SignalChanged(nameof(ProductCount));
             });
 
-            
+            DarkTheme = new MiniCommand(() =>
+            {
+                ThemesController.SetTheme(ThemesController.ThemeTypes.ColourfulDark);
+            });
+            LightTheme = new MiniCommand(() =>
+            {
+                ThemesController.SetTheme(ThemesController.ThemeTypes.ColourfulLight);
+            });
+
         }
 
     }

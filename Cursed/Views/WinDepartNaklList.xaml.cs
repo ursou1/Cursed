@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cursed.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace Cursed.Views
         public WinDepartNaklList()
         {
             InitializeComponent();
+            DataContext = new ViewModelDepartNaklList();
         }
     }
 }
