@@ -39,6 +39,13 @@ namespace Cursed.ViewModels
             DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
             DepartNotes = new ObservableCollection<DepartNote>(DB.DepartNotes);
 
+            //if (SelectedProduct.DepartNotes != null)
+            //{
+            //    SelectedProduct.PartOfWarehouse = null;
+            //}
+            //else
+            //    return;
+
             #region Фильтр, поиск
 
             EmployeesCollectionView = CollectionViewSource.GetDefaultView(Products);
@@ -87,19 +94,31 @@ namespace Cursed.ViewModels
         }
 
         #endregion
+        #region ne nyzhno
+        //public void Shit()
+        //{
+        //    foreach (Product Products in Products)
+        //    {
+        //        if (Products.DepartNotes != null)
+        //        {
+        //            Products.PartOfWarehouse = null;
+        //        }
+        //        else
+        //            return;
+        //    }
+        //}
+        //private DepartNote selectedDepartNote;
+        //public DepartNote SelectedDepartNote;
+        //{
+        //    get => selectedDepartNote;;
+        //    set
+        //    {
+        //        selectedDepartNote = value;
+        //        SignalChanged();
+        //    }
+        //}
 
-        public void Shit()
-        {
-            foreach (Product Products in Products)
-            {
-                if (Products.DepartNotes != null)
-                {
-                    Products.PartOfWarehouse = null;
-                }
-                else
-                    return;
-            }
-        }
+        #endregion
 
         private PartOfWarehouse selectedPartOfWarehouse;
         public PartOfWarehouse SelectedPartOfWarehouse
@@ -118,6 +137,13 @@ namespace Cursed.ViewModels
             get => selectedDepartNote;
             set
             {
+                if(selectedPartOfWarehouse != null)
+                {
+                    //selectedPartOfWarehouse = null;
+                    //SelectedPartOfWarehouse = null;
+                    SelectedProduct.PartOfWarehouse.Name = null;
+                    SelectedProduct.PartOfWarehouse = null;
+                }
                 selectedDepartNote = value;
                 SignalChanged();
             }

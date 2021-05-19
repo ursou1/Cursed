@@ -23,6 +23,14 @@ namespace Cursed.Views
         {
             InitializeComponent();
             DataContext = new ViewModelProduct();
+
+            //if (comboyx != null)
+            //{
+            //    combopart.Items.Clear();
+            //    combopart.SelectedIndex = -1;
+            //}
+            //else
+            //    return;
         }
         private void OpenProduct(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageProduct());
         private void OpenProvider(object sender, RoutedEventArgs e) => NavigationService.Navigate(new PageProvider());
