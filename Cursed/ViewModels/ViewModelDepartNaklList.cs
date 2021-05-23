@@ -45,9 +45,13 @@ namespace Cursed.ViewModels
                     if (selectedDepartNote.Products == null || selectedDepartNote.Products.Count == 0)
                     {
                         System.Windows.MessageBox.Show("Список пуст");
-
+                        Products = new ObservableCollection<Product>();// ЭТО ДЕЛАЕТ СПИСОК ПУСТЫМ ЕСЛИ МЫ ВЫБРАЛИ ПУСТОЙ ОТСЕК
+                        SignalChanged("Products");
+                        DepartCount = 0;
+                        SignalChanged(nameof(DepartCount));
                     }
                     else
+                    {
                         Products = new ObservableCollection<Product>(selectedDepartNote.Products);
                     SignalChanged("Products");
                     int monet = 0;
@@ -59,6 +63,7 @@ namespace Cursed.ViewModels
                     }
                     DepartCount = sum1;
                     SignalChanged(nameof(DepartCount));
+                    }
                 }
                 catch (Exception ex)
                 {

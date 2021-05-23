@@ -79,7 +79,7 @@ namespace Cursed.ViewModels
                     if (selectedPartOfWarehouse.Products == null || selectedPartOfWarehouse.Products.Count == 0)
                     {
                         System.Windows.MessageBox.Show("Вы выбрали пустой отсек");
-                        Products = new ObservableCollection<Product>();// ЭТО ДЕЛАЕТ СПИСОК ПУСТЫМ ЕСЛИ МЫ ВЫБРАЛИ ПУСТОЙ ОТСЕК
+                        Products = new ObservableCollection<Product>();
                         RefreshListView();
                         
                     }

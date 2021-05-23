@@ -64,20 +64,25 @@ namespace Cursed.ViewModels
                     if (selectedDeliveryNote.Products == null || selectedDeliveryNote.Products.Count == 0)
                     {
                         System.Windows.MessageBox.Show("Список пуст");
-
+                        Products = new ObservableCollection<Product>();// ЭТО ДЕЛАЕТ СПИСОК ПУСТЫМ ЕСЛИ МЫ ВЫБРАЛИ ПУСТОЙ ОТСЕК
+                        SignalChanged("Products");
+                        DeliveryCount = 0;
+                        SignalChanged(nameof(DeliveryCount));
                     }
                     else
+                    {
                         Products = new ObservableCollection<Product>(selectedDeliveryNote.Products);
                         SignalChanged("Products");
-                    int monet = 0;
-                    int sum1 = 0;
-                    foreach (var f in selectedDeliveryNote.Products)
-                    {
-                        monet = f.Count * f.Price;
-                        sum1 += monet;
+                          int monet = 0;
+                          int sum1 = 0;
+                         foreach (var f in selectedDeliveryNote.Products)
+                         {
+                           monet = f.Count * f.Price;
+                            sum1 += monet;
+                         }
+                         DeliveryCount = sum1;
+                         SignalChanged(nameof(DeliveryCount));
                     }
-                    DeliveryCount = sum1;
-                    SignalChanged(nameof(DeliveryCount));
 
                 }
                 catch (Exception ex)

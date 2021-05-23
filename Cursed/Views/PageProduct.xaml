@@ -52,10 +52,10 @@
 
 <!--New-->
                 <TextBlock Text="Номер приходной накладной" Margin="2,4,2,4"/>
-                <ComboBox ItemsSource="{Binding DeliveryNotes}" SelectedItem="{Binding SelectedProduct.DeliveryNotes}" DisplayMemberPath="Number" Margin="2"/>
+                <ComboBox ItemsSource="{Binding DeliveryNotes}" SelectedItem="{Binding SelectedProduct.DeliveryNotes}" DisplayMemberPath="Number" Margin="2" IsEditable="True"/>
 
-                <TextBlock Text="Номер уходной накладной" Margin="2,4,2,4"/>
-                <ComboBox  ItemsSource="{Binding DepartNotes}" SelectedItem="{Binding SelectedProduct.DepartNotes}" DisplayMemberPath="Number" Margin="2"/>
+                <TextBlock Text="Номер расходной накладной" Margin="2,4,2,4"/>
+                <ComboBox  ItemsSource="{Binding DepartNotes}" SelectedItem="{Binding SelectedProduct.DepartNotes}" DisplayMemberPath="Number" Margin="2" IsEditable="True"/>
 <!--New-->
 
                 <TextBlock Text="Код" Margin="2,4,2,4"/>
