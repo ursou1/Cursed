@@ -16,7 +16,6 @@ namespace Cursed.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<Product> Products { get; set; }
         public ObservableCollection<PartOfWarehouse> PartOfWarehouses { get; set; }
-        public ObservableCollection<Provider> Providers { get; set; }
         public ObservableCollection<ProductType> ProductTypes { get; set; }
         public ObservableCollection<DeliveryNote> DeliveryNotes { get; set; }
         public ObservableCollection<DepartNote> DepartNotes { get; set; }
@@ -34,17 +33,10 @@ namespace Cursed.ViewModels
             DB = DB.GetDb();
             Products = new ObservableCollection<Product>(DB.Products);
             PartOfWarehouses = new ObservableCollection<PartOfWarehouse>(DB.PartOfWarehouses);
-            Providers = new ObservableCollection<Provider>(DB.Providers);
             ProductTypes = new ObservableCollection<ProductType>(DB.ProductTypes);
             DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
             DepartNotes = new ObservableCollection<DepartNote>(DB.DepartNotes);
 
-            //if (SelectedProduct.DepartNotes != null)
-            //{
-            //    SelectedProduct.PartOfWarehouse = null;
-            //}
-            //else
-            //    return;
 
             #region Фильтр, поиск
 
@@ -71,6 +63,13 @@ namespace Cursed.ViewModels
             {
                 try
                 {
+                    if (SelectedProduct != null)
+                    {
+                        if (SelectedProduct.DepartNotes != null)
+                        {
+                            SelectedProduct.PartOfWarehouse = null;
+                        }
+                    }
                     DB.SaveChanges();
                     LoadProducts();
                     RefreshListView();
@@ -94,31 +93,7 @@ namespace Cursed.ViewModels
         }
 
         #endregion
-        #region ne nyzhno
-        //public void Shit()
-        //{
-        //    foreach (Product Products in Products)
-        //    {
-        //        if (Products.DepartNotes != null)
-        //        {
-        //            Products.PartOfWarehouse = null;
-        //        }
-        //        else
-        //            return;
-        //    }
-        //}
-        //private DepartNote selectedDepartNote;
-        //public DepartNote SelectedDepartNote;
-        //{
-        //    get => selectedDepartNote;;
-        //    set
-        //    {
-        //        selectedDepartNote = value;
-        //        SignalChanged();
-        //    }
-        //}
-
-        #endregion
+       
 
         private PartOfWarehouse selectedPartOfWarehouse;
         public PartOfWarehouse SelectedPartOfWarehouse
@@ -139,10 +114,8 @@ namespace Cursed.ViewModels
             {
                 if(selectedPartOfWarehouse != null)
                 {
-                    //selectedPartOfWarehouse = null;
-                    //SelectedPartOfWarehouse = null;
-                    SelectedProduct.PartOfWarehouse.Name = null;
                     SelectedProduct.PartOfWarehouse = null;
+                    
                 }
                 selectedDepartNote = value;
                 SignalChanged();

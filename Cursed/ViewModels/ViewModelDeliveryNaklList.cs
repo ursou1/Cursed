@@ -1,4 +1,5 @@
-﻿using Cursed.Enttities;
+﻿using Cursed.Commands;
+using Cursed.Enttities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,8 +16,13 @@ namespace Cursed.ViewModels
 
         public ObservableCollection<DeliveryNote> DeliveryNotes { get; set; }
         public ObservableCollection<Product> Products { get; set; }
-
-        
+        public int DeliveryCount { get; set; }
+        public int Counts;
+        public int Prices;
+        //public int monet;
+        //public int sum1;
+        public int sum2;
+        public MiniCommand DeliveryCounting { get; set; }
         void SignalChanged([CallerMemberName] string prop = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -25,9 +31,26 @@ namespace Cursed.ViewModels
             DB = DB.GetDb();
 
             DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
-            
-        }
 
+
+            //DeliveryCounting = new MiniCommand(() =>
+            //{
+            //        int monet = 0;
+            //        int sum1 = 0;
+            //    foreach (var f in selectedDeliveryNote.Products)
+            //    {
+            //        monet = f.Count * f.Price;
+            //        sum1 += monet;
+            //        //Counts += f.Count;
+            //        //Prices += f.Price;
+            //        //DeliveryCount = Counts * Prices;
+            //    }
+            //        DeliveryCount = sum1;
+            //        SignalChanged(nameof(DeliveryCount));
+            //});
+
+        }
+        
         private DeliveryNote selectedDeliveryNote;
 
         public DeliveryNote SelectedDeliveryNote
@@ -46,6 +69,16 @@ namespace Cursed.ViewModels
                     else
                         Products = new ObservableCollection<Product>(selectedDeliveryNote.Products);
                         SignalChanged("Products");
+                    int monet = 0;
+                    int sum1 = 0;
+                    foreach (var f in selectedDeliveryNote.Products)
+                    {
+                        monet = f.Count * f.Price;
+                        sum1 += monet;
+                    }
+                    DeliveryCount = sum1;
+                    SignalChanged(nameof(DeliveryCount));
+
                 }
                 catch (Exception ex)
                 {

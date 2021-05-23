@@ -39,5 +39,10 @@
             <TextBlock Text="Выберите накладную" Margin="2,4,2,4" HorizontalAlignment="Center"/>
             <ComboBox ItemsSource="{Binding DepartNotes}" SelectedItem="{Binding SelectedDepartNote}" DisplayMemberPath="Number" Margin="2,2,2,2" Width="200" />
         </StackPanel>
+        <StackPanel Grid.Column="0" Margin="0,80,0,0">
+            <TextBlock Text="Стоимость товаров в накладной" HorizontalAlignment="Center"/>
+            <TextBox  Text="{Binding DepartCount}" IsReadOnly="True" Width="180" />
+        </StackPanel>
+        <!--<Button Content="Посчитать" Command="{Binding DeliveryCounting}" Width="100" Padding="5" Margin="5"/>-->
     </Grid>
 </Window>

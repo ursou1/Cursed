@@ -24,7 +24,7 @@
                 <MenuItem Header="Клиенты" Click="OpenClient"/>
                 <MenuItem Header="Поставщики" Click="OpenProvider"/>
                 <MenuItem Header="Накладная" Click="OpenPageDeliveryNakl"/>
-                <MenuItem Header="Настройки" Click="OpenPageSettings"/>
+                <MenuItem Header="Дополнительно" Click="OpenPageSettings"/>
             </Menu>
         </StackPanel>
         <Grid Grid.Row="1">
@@ -35,7 +35,7 @@
             <ListView Grid.Column="1" ItemsSource="{Binding Providers}" SelectedItem="{Binding SelectedProvider}"  Margin="2,0,2,0">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="Телефон" DisplayMemberBinding="{Binding Telephone}"/>
                         <GridViewColumn Header="Почта" DisplayMemberBinding="{Binding Email}"/>
                     </GridView>
@@ -43,7 +43,7 @@
             </ListView>
             <StackPanel Grid.Row="1" Grid.Column="0">
 
-                <TextBlock Text="Имя" Margin="2,4,2,4"/>
+                <TextBlock Text="Наименование" Margin="2,4,2,4"/>
                 <TextBox Text="{Binding SelectedProvider.Name}" Margin="2,4,2,4"/>
 
                 <TextBlock Text="Телефон" Margin="2,4,2,4"/>

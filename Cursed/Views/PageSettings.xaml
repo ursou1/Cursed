@@ -24,7 +24,7 @@
             <Button Content="Светлая тема" Height="50" Width="250" Margin="20" Command="{Binding LightTheme}"/>
             
             <TextBlock Text="Всего товаров на складе"/>
-            <TextBox Text="{Binding ProductCount}"/>
+            <TextBox Text="{Binding ProductCount}" IsReadOnly="True"/>
 
             <TextBlock Text="Товаров в выбранном "/>
             <TextBox Text="{Binding ProductPartCount}"/>
@@ -36,7 +36,7 @@
                 <MenuItem Header="Клиенты" Click="OpenClient"/>
                 <MenuItem Header="Поставщики" Click="OpenProvider"/>
                 <MenuItem Header="Накладная" Click="OpenPageDeliveryNakl"/>
-                <MenuItem Header="Настройки" Click="OpenPageSettings"/>
+                <MenuItem Header="Дополнительно" Click="OpenPageSettings"/>
             </Menu>
         </StackPanel>
         

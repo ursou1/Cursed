@@ -18,6 +18,7 @@ namespace Cursed.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         void SignalChanged([CallerMemberName] string prop = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         public ObservableCollection<DepartNote> DepartNotes { get; set; }
+        public ObservableCollection<Client> Clients { get; set; }
 
         public MiniCommand AddDepartNakl { get; set; }
         public MiniCommand SaveDepartNakl { get; set; }
@@ -28,6 +29,7 @@ namespace Cursed.ViewModels
         {
             DB = DB.GetDb();
             DepartNotes = new ObservableCollection<DepartNote>(DB.DepartNotes);
+            Clients = new ObservableCollection<Client>(DB.Clients);
             SignalChanged("DeliveryNotes");
 
             #region Команда с добавлением

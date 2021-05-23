@@ -30,11 +30,12 @@ namespace Cursed.ViewModels
         #endregion
 
         public ObservableCollection<DeliveryNote> DeliveryNotes { get; set; }
+        public ObservableCollection<Provider> Providers { get; set; }
         public ViewModelDeliveryNakl()
         {
             DB = DB.GetDb();
+            Providers = new ObservableCollection<Provider>(DB.Providers);
             DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
-            SignalChanged("DeliveryNotes");
 
             #region Команда с добавлением
 
@@ -90,6 +91,15 @@ namespace Cursed.ViewModels
             }
         }
 
+        private Provider selectedProvider;
+        public Provider SelectedProvider
+        {
+            get => selectedProvider;
+            set
+            {
+                selectedProvider = value;
+            }
+        }
         private void LoadDeliveryNotes()
         {
             DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);

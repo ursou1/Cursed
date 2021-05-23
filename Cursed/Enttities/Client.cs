@@ -14,5 +14,7 @@ namespace Cursed.Enttities
         public string Address { get; set; }
         public string Email { get; set; }
         public List<DepartNote> DepartNotes { get; set; }
+        public string FullName { get => $"{Name} {Female} {FatherName}"; }
+
     }
 }

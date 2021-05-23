@@ -31,6 +31,7 @@
                         <GridViewColumn Header="Код" DisplayMemberBinding="{Binding Code}"/>
                         <GridViewColumn Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="Кол-во" DisplayMemberBinding="{Binding Count}"/>
+                        <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}"/>
                         <GridViewColumn Header="Ед. изм." DisplayMemberBinding="{Binding Unit}"/>
                     </GridView>
                 </ListView.View>
@@ -41,6 +42,11 @@
             <TextBlock Text="Выберите накладную" Margin="2,4,2,4" HorizontalAlignment="Center"/>
             <ComboBox ItemsSource="{Binding DeliveryNotes}" SelectedItem="{Binding SelectedDeliveryNote}" DisplayMemberPath="Number" Margin="2,2,2,2" Width="200" />
         </StackPanel>
+        <StackPanel Grid.Column="0" Margin="0,80,0,0">
+            <TextBlock Text="Стоимость товаров в накладной" HorizontalAlignment="Center"/>
+            <TextBox  Text="{Binding DeliveryCount}" IsReadOnly="True" Width="180" />
+        </StackPanel>
+            <!--<Button Content="Посчитать" Command="{Binding DeliveryCounting}" Width="100" Padding="5" Margin="5"/>-->
         
         
     </Grid>

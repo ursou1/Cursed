@@ -24,7 +24,7 @@
                 <MenuItem Header="Клиенты" Click="OpenClient"/>
                 <MenuItem Header="Поставщики" Click="OpenProvider"/>
                 <MenuItem Header="Накладная" Click="OpenPageDeliveryNakl"/>
-                <MenuItem Header="Настройки" Click="OpenPageSettings"/>
+                <MenuItem Header="Дополнительно" Click="OpenPageSettings"/>
             </Menu>
         </StackPanel>
         <Grid Grid.Row="1">

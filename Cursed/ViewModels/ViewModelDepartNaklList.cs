@@ -1,4 +1,5 @@
-﻿using Cursed.Enttities;
+﻿using Cursed.Commands;
+using Cursed.Enttities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +17,13 @@ namespace Cursed.ViewModels
 
         public ObservableCollection<Product> Products { get; set; }
         public ObservableCollection<DepartNote> DepartNotes { get; set; }
-
+        public int DepartCount { get; set; }
+        public int Counts;
+        public int Prices;
+        //public int monet;
+        //public int sum1;
+        public int sum2;
+        public MiniCommand DepartCounting { get; set; }
         void SignalChanged([CallerMemberName] string prop = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         public ViewModelDepartNaklList()
         {
@@ -43,6 +50,15 @@ namespace Cursed.ViewModels
                     else
                         Products = new ObservableCollection<Product>(selectedDepartNote.Products);
                     SignalChanged("Products");
+                    int monet = 0;
+                    int sum1 = 0;
+                    foreach (var f in selectedDepartNote.Products)
+                    {
+                        monet = f.Count * f.Price;
+                        sum1 += monet;
+                    }
+                    DepartCount = sum1;
+                    SignalChanged(nameof(DepartCount));
                 }
                 catch (Exception ex)
                 {

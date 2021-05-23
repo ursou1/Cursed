@@ -25,7 +25,7 @@
                 <MenuItem Header="Клиенты" Click="OpenClient"/>
                 <MenuItem Header="Поставщики" Click="OpenProvider"/>
                 <MenuItem Header="Накладная" Click="OpenPageDeliveryNakl"/>
-                <MenuItem Header="Настройки" Click="OpenPageSettings"/>
+                <MenuItem Header="Дополнительно" Click="OpenPageSettings"/>
             </Menu>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
@@ -36,7 +36,7 @@
         </StackPanel>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="310"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -44,6 +44,9 @@
 
                 <TextBlock Text="Номер накладной" Margin="2,4,2,4"/>
                 <TextBox Text="{Binding SelectedDepartNote.Number}" Margin="2,4,2,4"/>
+
+                <TextBlock Text="Клиент" Margin="2,4,2,4"/>
+                <ComboBox  ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedDepartNote.Clients}" DisplayMemberPath="FullName" Margin="2" IsEditable="True"/>
 
                 <TextBlock Text="Дата" Margin="2,4,2,4"/>
                 <TextBox Text="{Binding SelectedDepartNote.DepartDate}" Margin="2,4,2,4"/>
@@ -56,11 +59,12 @@
                 <Button Content="Удалить" Padding="5" Margin="5" Command="{Binding DeleteDepartNakl}"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="1">
-                <ListView Grid.Column="1" ItemsSource="{Binding DepartNotes}" SelectedItem="{Binding SelectedDepartNote}"  Margin="2,0,2,0"  Height="600">
+                <ListView Grid.Column="1" ItemsSource="{Binding DepartNotes}" SelectedItem="{Binding SelectedDepartNote}"  Margin="2,0,2,0"  Height="1200">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Номер" DisplayMemberBinding="{Binding Number}" Width="100"/>
                             <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding DepartDate}" Width="200"/>
+                            <GridViewColumn Header="Клиент" DisplayMemberBinding="{Binding Clients.FullName}" Width="200"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
