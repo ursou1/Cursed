@@ -42,6 +42,11 @@
 
             <StackPanel Grid.Row="1" Grid.Column="0">
 
+                <!--поиск-->
+                <TextBlock  Text="Поиск"/>
+                <TextBox  Margin="2" Text="{Binding EmployeesFilter, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--поиск-->
+
                 <TextBlock Text="Номер накладной" Margin="2,4,2,4"/>
                 <TextBox Text="{Binding SelectedDepartNote.Number}" Margin="2,4,2,4"/>
 

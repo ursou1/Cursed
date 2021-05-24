@@ -46,6 +46,11 @@
             </ListView>
             <StackPanel Grid.Row="1" Grid.Column="0">
 
+                <!--поиск-->
+                <TextBlock  Text="Поиск"/>
+                <TextBox  Margin="2" Text="{Binding EmployeesFilter, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--поиск-->
+                
                 <TextBlock Text="Имя" Margin="2,4,2,4"/>
                 <TextBox Text="{Binding SelectedClient.Name}" Margin="2,4,2,4"/>
 

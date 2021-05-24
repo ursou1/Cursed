@@ -37,9 +37,36 @@ namespace Cursed.ViewModels
 
             CountingProduct = new MiniCommand(() =>
             {
-                ProductCount = Products.Where(s => s.PartOfWarehouse == s.PartOfWarehouse).Count();
+                //ProductCount = Products.Where(s => s.PartOfWarehouse == s.PartOfWarehouse).Count();
+                //SignalChanged(nameof(ProductCount));
+
+                //for (int i = 0; i < Products.Count;i++)
+                //{
+                //    if (Products[i].DeliveryNotes != null & Products[i].DepartNotes == null)
+                //    {
+                //        ProductCount++;
+                //    }
+                //    else return;
+                //}
+                //ProductCount = 0;
+                Products = new ObservableCollection<Product>(DB.Products);
+                ProductCount = 0;
+                foreach (var f in Products)
+                {
+                    if (f.DepartNotes == null)
+                    {
+                        ProductCount++;
+                    }
+                }
                 SignalChanged(nameof(ProductCount));
             });
+
+
+            //CountingProduct = new MiniCommand(() =>
+            //{
+            //    ProductCount = Products.Where(s => s.PartOfWarehouse == s.PartOfWarehouse).Count();
+            //    SignalChanged(nameof(ProductCount));
+            //});
 
             DarkTheme = new MiniCommand(() =>
             {

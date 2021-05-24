@@ -8,10 +8,11 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
+using System.Windows.Data;
 
 namespace Cursed.ViewModels
 {
-    public class ViewModelDepartNakl: INotifyPropertyChanged
+    public class ViewModelDepartNakl: ViewModelBase, INotifyPropertyChanged
     {
         DB DB;
         public Window window { get; set; }
@@ -32,6 +33,15 @@ namespace Cursed.ViewModels
             Clients = new ObservableCollection<Client>(DB.Clients);
             SignalChanged("DeliveryNotes");
 
+            #region Фильтр, поиск
+
+            EmployeesCollectionView = CollectionViewSource.GetDefaultView(DepartNotes);
+            EmployeesCollectionView.Filter = FilterEmployees;
+            EmployeesCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(DepartNote.Clients))); // эта сортировка группирует по единице товара
+           // EmployeesCollectionView.SortDescriptions.Add(new SortDescription(nameof(Product.Code), ListSortDirection.Ascending)); // это сортировка по коду товара
+
+            #endregion
+
             #region Команда с добавлением
 
             AddDepartNakl = new MiniCommand(() =>
@@ -39,6 +49,7 @@ namespace Cursed.ViewModels
                 var departNote = new DepartNote { };
                 DB.DepartNotes.Add(departNote);
                 SelectedDepartNote = departNote;
+                RefreshListView();
             });
             #endregion
 
@@ -49,6 +60,7 @@ namespace Cursed.ViewModels
                 {
                     DB.SaveChanges();
                     LoadDepartNote();
+                    RefreshListView();
                 }
                 catch (Exception ex)
                 {
@@ -63,6 +75,7 @@ namespace Cursed.ViewModels
                 DB.DepartNotes.Remove(selectedDepartNote);
                 DB.SaveChanges();
                 LoadDepartNote();
+                RefreshListView();
             });
             #endregion
 
@@ -92,6 +105,45 @@ namespace Cursed.ViewModels
             DepartNotes = new ObservableCollection<DepartNote>(DB.DepartNotes);
             SignalChanged("DepartNotes");
         }
+
+        #region поляна для работы с фильтрами, поиском
+        public ICollectionView EmployeesCollectionView { get; set; }
+
+        private string _employeesFilter = string.Empty;
+        public string EmployeesFilter
+        {
+            get
+            {
+                return _employeesFilter;
+            }
+            set
+            {
+                _employeesFilter = value;
+                OnPropertyChanged(nameof(EmployeesFilter));
+                EmployeesCollectionView.Refresh();
+            }
+        }
+        private bool FilterEmployees(object obj)
+        {
+            if (obj is DepartNote departNote)
+            {
+                string nm = departNote.DepartDate.ToString();
+                string dp = departNote.Number.ToString();
+                return dp.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase) || nm.Contains(EmployeesFilter, StringComparison.InvariantCultureIgnoreCase);
+            }
+            return false;
+        }
+
+        // Метод ниже обновляет листвью, чтобы работал поиск после редактирования листвью. (перезаписывает в icollection уже отредаченный список и поиск снова работает)
+        private void RefreshListView()
+        {
+            EmployeesCollectionView = CollectionViewSource.GetDefaultView(DepartNotes);
+            EmployeesCollectionView.Filter = FilterEmployees;
+            EmployeesCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(DepartNote.Clients)));
+            //EmployeesCollectionView.SortDescriptions.Add(new SortDescription(nameof(Product.Code), ListSortDirection.Ascending));
+        }
+
+        #endregion
 
     }
 }
