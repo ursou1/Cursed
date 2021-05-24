@@ -18,7 +18,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Подсчитать в отсеке" Height="50" Width="250" Margin="20" Command="{Binding CountingPartProduct}"/>
             <Button Content="Подсчитать" Height="50" Width="250" Margin="20" Command="{Binding CountingProduct}"/>
             <Button Content="Темная тема" Height="50" Width="250" Margin="20" Command="{Binding DarkTheme}"/>
             <Button Content="Светлая тема" Height="50" Width="250" Margin="20" Command="{Binding LightTheme}"/>
@@ -26,8 +25,7 @@
             <TextBlock Text="Всего товаров на складе"/>
             <TextBox Text="{Binding ProductCount}" IsReadOnly="True"/>
 
-            <TextBlock Text="Товаров в выбранном "/>
-            <TextBox Text="{Binding ProductPartCount}"/>
+            
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Menu >
