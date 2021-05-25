@@ -34,7 +34,7 @@
             </Menu>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Приложение по автоматизации складского учета" FontSize="25" FontFamily="DFKai-SB"  Margin="0,0,0,200"/>
+            <TextBlock Text="Приложение по автоматизации складского учета на предприятии" FontSize="25" FontFamily="DFKai-SB"  Margin="0,0,0,200"/>
         </StackPanel>
     </Grid>
 </Page>

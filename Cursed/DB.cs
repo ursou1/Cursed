@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Cursed
@@ -19,7 +20,7 @@ namespace Cursed
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var sb = new SqlConnectionStringBuilder();
-            sb.DataSource = @"WIN-0DJJ09S5CB3";
+            sb.DataSource = File.ReadAllText("database.txt");
             sb.InitialCatalog = "Malek";
             sb.IntegratedSecurity = true;
             optionsBuilder.UseSqlServer(sb.ToString());

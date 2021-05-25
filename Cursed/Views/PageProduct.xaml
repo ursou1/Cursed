@@ -41,7 +41,7 @@
                 <TextBox  Margin="2" Text="{Binding EmployeesFilter, UpdateSourceTrigger=PropertyChanged}"/>
                 <!--поиск-->
             
-                <TextBlock Text="Отсек" Margin="2,4,2,4"/>
+                <TextBlock Text="Зона хранения" Margin="2,4,2,4"/>
                 <ComboBox ItemsSource="{Binding PartOfWarehouses}" SelectedItem="{Binding SelectedProduct.PartOfWarehouse}" DisplayMemberPath="Name" Margin="2" IsEditable="True"/>
             
                 <!--<TextBlock Text="Поставщик" Margin="2,4,2,4"/>

@@ -19,6 +19,8 @@ namespace Cursed.ViewModels
         public int ProductCount { get; set; }
         public ObservableCollection<Product> Products { get; set; }
         public ObservableCollection<PartOfWarehouse> PartOfWarehouses { get; set; }
+        public ObservableCollection<DepartNote> DepartNotes { get; set; }
+        public ObservableCollection<DeliveryNote> DeliveryNotes { get; set; }
         public MiniCommand AllProduct { get; set; }
         public MiniCommand CountingProduct { get; set; }
         public MiniCommand DarkTheme { get; set; }
@@ -29,8 +31,12 @@ namespace Cursed.ViewModels
             DB = DB.GetDb();
             PartOfWarehouses = new ObservableCollection<PartOfWarehouse>(DB.PartOfWarehouses);
             Products = new ObservableCollection<Product>(DB.Products);
+            DepartNotes = new ObservableCollection<DepartNote>(DB.DepartNotes);
+            DeliveryNotes = new ObservableCollection<DeliveryNote>(DB.DeliveryNotes);
             SignalChanged("PartOfWareHouses");
             SignalChanged("Products");
+            SignalChanged("DepartNotes");
+            SignalChanged("DeliveryNotes");
 
             //ProductCount = Products.Where(s => s.PartOfWarehouse == s.PartOfWarehouse).Count(); Если мы хотим сразу отобразить число товаров на складе
             //SignalChanged(nameof(ProductCount));
